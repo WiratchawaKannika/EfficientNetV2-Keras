@@ -35,7 +35,7 @@
 - conda install pandas
 - pip install -U scikit-image
 ```
-* *EfficientNetV2 models rewritten in Keras functional API From repository.
+* *EfficientNetV2 models rewritten in Keras functional API From Repository.
 - 🐥https://github.com/sebastian-sz/efficientnet-v2-keras.git
 
 ### 4. Verify install
