@@ -4,7 +4,7 @@
 * Ubuntu 16.04 or higher (64-bit)
 * python >= 3.9+
 * TensorFlow >= 2.10
-* tensorflow-gpu >= 2.10.
+* tensorflow-gpu >= 2.10
 
 ### 1. Create a conda environment
 ```
