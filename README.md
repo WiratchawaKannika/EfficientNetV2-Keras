@@ -34,9 +34,43 @@
 - conda install jupyter
 - conda install pandas
 - pip install -U scikit-image
+```
+* *EfficientNetV2 models rewritten in Keras functional API From repository.
+- 🐥https://github.com/sebastian-sz/efficientnet-v2-keras.git
+
+### 4. Verify install
+*Verify the GPU setup:
+```
+- import tensorflow as tf
+- print(tf.__version__)
+```
+
+```
+- physical_devices = tf.config.list_physical_devices('GPU') 
+- print("Num GPUs:", len(physical_devices))
+```
+
+``` 
+- print('Num GPUs Available:', len(tf.config.experimental.list_physical_devices('GPU')))
+```
+
+```
+- tf.test.is_gpu_available(cuda_only=False, min_cuda_compute_capability=None)
+
+'2022-09-29 15:09:18.107884: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /device:GPU:0 with 9454 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:17:00.0, compute capability: 7.5
+2022-09-29 15:09:18.108402: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /device:GPU:1 with 9629 MB memory:  -> device: 1, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:65:00.0, compute capability: 7.5
+True'
+```
+
+```
+- python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+```
+If a list of GPU devices is returned, you've installed TensorFlow successfully.
+
+--------------------
 
 
-# ⛄Install TensorFlow 2.10.x with pip , GPU (Set environment. "Python 3.9+")
+#### ⛄Install TensorFlow 2.10.x with pip , GPU (Set environment. "Python 3.9+")
 
 - https://www.tensorflow.org/install/pip
 
