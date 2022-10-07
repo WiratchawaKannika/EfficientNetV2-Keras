@@ -11,6 +11,8 @@ from tensorflow.keras import callbacks
 import pandas as pd
 from keras.utils import generic_utils
 from efficientnet_v2 import get_preprocessing_layer
+from keras import layers
+from keras import models
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
