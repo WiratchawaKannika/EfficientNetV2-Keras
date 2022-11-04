@@ -25,7 +25,7 @@ tf_device='/gpu:1'
 #Setting
 BATCH_SIZE = 16
 TARGET_SIZE = (480, 480)  # M variant expects images in shape (480, 480)
-epochs = 5
+epochs = 200
 
 # Setting dataset  
 ## train
