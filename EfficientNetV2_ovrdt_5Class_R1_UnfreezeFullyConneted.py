@@ -17,13 +17,13 @@ from tensorflow.keras import optimizers
 
 
 # os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   
-# os.environ["CUDA_VISIBLE_DEVICES"]="0"
+# os.environ["CUDA_VISIBLE_DEVICES"]="1"
 ##
 #os.environ["CUDA_VISIBLE_DEVICES"]="0"
 tf_device='/gpu:1'
 
 #Setting
-BATCH_SIZE = 32
+BATCH_SIZE = 16
 TARGET_SIZE = (480, 480)  # M variant expects images in shape (480, 480)
 epochs = 200
 
@@ -161,4 +161,3 @@ with open(f"{Pth_model_save}EffnetV2m_R1_5ClassOVRDT.tflite", "wb") as file:
 #save model        
 model.save(f'{Pth_model_save}EffnetV2m_R1_5ClassOVRDT.h5') 
 print(f'Save Model as [ {Pth_model_save}EffnetV2m_R1_5ClassOVRDT.h5 ]')
-
