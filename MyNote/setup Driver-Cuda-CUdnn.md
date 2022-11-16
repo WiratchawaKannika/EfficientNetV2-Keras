@@ -149,8 +149,63 @@ sudo apt install nvidia-utils-520
 sudo reboot
 ```
 
+ - [X] Graphic card detail (ใหม่)
 
+ ```
+ nvidia-smi -l
 
+ "NVIDIA-SMI 520.56.06
+ Driver Version: 520.56.06
+ CUDA Version: 11.8"
+ ```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## 2. Install NVIDIA CUDA Toolkit 11.8 
+
+Go to https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_local 
+
+*Don't forget to log in before clicking this link.*
+
+- [X] Installation Instructions:
+
+  ```
+  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+  sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+  wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-ubuntu2004-11-8-local_11.8.0-520.61.05-1_amd64.deb
+  sudo dpkg -i cuda-repo-ubuntu2004-11-8-local_11.8.0-520.61.05-1_amd64.deb
+  sudo cp /var/cuda-repo-ubuntu2004-11-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
+  sudo apt-get update
+  sudo apt-get -y install cuda
+  ```
+ 
+- [X] Checks CUDA toolkit is installed:
+
+   ```
+   systemctl status nvidia-persistenced
+   ```
+
+  From its [documentation](https://download.nvidia.com/XFree86/Linux-x86_64/396.51/README/nvidia-persistenced.html), nvidia-persistenced is intended to be run as a daemon from system initialization and is generally designed as a tool for compute-only      platforms where the NVIDIA device is not used to display a graphical user interface. If the daemon is not running, you can start/restart the daemon as follows
+  
+  ```
+  sudo systemctl enable nvidia-persistenced
+  ```
+  
+  - [X] To get the version of the NVIDIA driver, type
+ 
+  ```
+  cat /proc/driver/nvidia/version
+  
+  "NVRM version: NVIDIA UNIX x86_64 Kernel Module  520.61.05  Thu Sep 29 05:30:25 UTC 2022
+  GCC version:  gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)"
+  ```
+  
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+  ## 3. Install NVIDIA cuDNN
+  
+  
+  
 
 
 
