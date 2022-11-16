@@ -296,6 +296,18 @@ cd  $HOME/cudnn_samples_v8/mnistCUDNN
   Test passed!
   ```
   
+  ![test_pass image](test_pass.png) 
+  
+- [X] PS. ถ้า test แล้วมี ``fatal error: FreeImage.h``
+
+  ```
+  test.c:1:10: fatal error: FreeImage.h: No such file or directory
+      1 | [[include]] "FreeImage.h"
+  ```
+  
+  ![Free_Image](FreeImage.png) 
+  
+  
   
 
 
