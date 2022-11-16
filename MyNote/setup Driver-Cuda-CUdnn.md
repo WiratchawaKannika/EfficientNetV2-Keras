@@ -232,12 +232,35 @@ sudo cp /var/cudnn-local-repo-*/cudnn-local-*-keyring.gpg /usr/share/keyrings/
 sudo apt-get update
 ```
 
-### 3.4 Install the runtime library.
+### 3.4 Install library.
 
-ก่อนทำขั้นตอนนี้ ให้เข้าไป check library ใน 
+ก่อนทำขั้นตอนนี้ ให้เข้าไป check library ใน ``cd /var/cudnn-local-repo-ubuntu2004-8.5.0.96`` ควรจะมี 3 ไฟล์ ดังนี้
 
+```
+libcudnn8_8.5.0.96-1+cuda11.7_amd64.deb
+libcudnn8-dev_8.5.0.96-1+cuda11.7_amd64.deb
+libcudnn8-samples_8.5.0.96-1+cuda11.7_amd64.deb
+```
+
+#### 3.4.1 Install the runtime library
+
+```
+sudo apt-get install libcudnn8=8.5.0.96-1+cuda11.7
+```
+
+#### 3.4.2 Install the developer library.
+
+```
+sudo apt-get install libcudnn8-dev=8.5.0.96-1+cuda11.7
+```
  
-  
+#### 3.4.3 Install the code samples and the cuDNN library documentation.
+
+```
+sudo apt-get install libcudnn8-samples=8.5.0.96-1+cuda11.7
+```
+
+
   
   
 
