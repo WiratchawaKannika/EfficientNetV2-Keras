@@ -122,8 +122,32 @@ systemctl set-default multi-user.target
 reboot
 ```
 
+### 1.9 Run NVIDIA Binary
 
+```
+sudo du
+/path/to/NVIDIA-Linux-x86_64-520.56.06.run
+```
 
+- [X] NVIDIA Installer Installing Drivers
+  
+   ![confirm image](confirm_install.png) 
+   
+ ### 1.10 All Is Done and Then Reboot Back to Runlevel 5
+ 
+ ```
+systemctl set-default graphical.target
+reboot
+```
+  - [X] succeed!!, Next step install "nvidia-smi":
+  
+ ```
+sudo apt purge nvidia-*
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+sudo apt install nvidia-utils-520
+sudo reboot
+```
 
 
 
