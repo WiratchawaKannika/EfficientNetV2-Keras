@@ -325,8 +325,7 @@ cd  $HOME/cudnn_samples_v8/mnistCUDNN
 ```
 dpkg -l | grep cudnn
 
-"
-ii  cudnn-local-repo-ubuntu2004-8.5.0.96       1.0-1                               amd64        cudnn-local repository configuration files
+"ii  cudnn-local-repo-ubuntu2004-8.5.0.96       1.0-1                               amd64        cudnn-local repository configuration files
 ii  libcudnn8                                  8.5.0.96-1+cuda11.7                 amd64        cuDNN runtime libraries
 ii  libcudnn8-dev                              8.5.0.96-1+cuda11.7                 amd64        cuDNN development libraries and headers
 ii  libcudnn8-samples                          8.5.0.96-1+cuda11.7                 amd64        cuDNN samples"
