@@ -204,6 +204,16 @@ Go to https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x8
   
   ## 3. Install NVIDIA cuDNN
   
+ In order to download cuDNN, ensure you are registered for the NVIDIA [Developer Program](https://developer.nvidia.com/developer-program).
+ After logging in and accepting their terms and conditions, click on the following this links: [cuDNN Archive](https://developer.nvidia.com/rdp/cudnn-archive)
+ 
+ ![chooseCUdnn image](chooseCUdnn.png) 
+ 
+ Click Download. Then, ``scp cudnn-local-repo-ubuntu2004-8.5.0.96_1.0-1_amd64.deb username@xx.xxx.xxx.xx:/home/username/downloaded``
+ **NOTE** Absolutely do not download using the command ``wget`` เพราะจะทำให้ไฟล์เสียหาย และติดตั้งไม่ได้
+ 
+ 
+  
   
   
 
