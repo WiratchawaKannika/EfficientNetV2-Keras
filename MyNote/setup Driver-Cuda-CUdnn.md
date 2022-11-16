@@ -19,6 +19,8 @@ CUDA Version: 11.7"
 sudo lshw -C display
 ```
 
+![lshw image](gisplay_lshw.png) 
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 1. Install NVIDIA Driver
@@ -234,12 +236,12 @@ sudo apt-get update
 
 ### 3.4 Install library.
 
-ก่อนทำขั้นตอนนี้ ให้เข้าไป check library ใน ``cd /var/cudnn-local-repo-ubuntu2004-8.5.0.96`` ควรจะมี 3 ไฟล์ ดังนี้
+*ก่อนทำขั้นตอนนี้ ให้เข้าไป check library ใน ``cd /var/cudnn-local-repo-ubuntu2004-8.5.0.96`` ควรจะมี 3 ไฟล์ ดังนี้*
 
 ```
-libcudnn8_8.5.0.96-1+cuda11.7_amd64.deb
-libcudnn8-dev_8.5.0.96-1+cuda11.7_amd64.deb
-libcudnn8-samples_8.5.0.96-1+cuda11.7_amd64.deb
+- libcudnn8_8.5.0.96-1+cuda11.7_amd64.deb
+- libcudnn8-dev_8.5.0.96-1+cuda11.7_amd64.deb
+- libcudnn8-samples_8.5.0.96-1+cuda11.7_amd64.deb
 ```
 
 #### 3.4.1 Install the runtime library
@@ -259,6 +261,42 @@ sudo apt-get install libcudnn8-dev=8.5.0.96-1+cuda11.7
 ```
 sudo apt-get install libcudnn8-samples=8.5.0.96-1+cuda11.7
 ```
+
+### 3.5 Verifying the Install on Linux
+
+To verify that cuDNN is installed and is running properly, compile the mnistCUDNN sample located in the /usr/src/cudnn_samples_v8 directory in the Debian file. 
+
+*ก่อนทำขั้นตอนนี้เข้าไป Check ให้แน่ใจก่อนว่ามี Folder ``mnistCUDNN`` ใน ``cd /usr/src/cudnn_samples_v8/cudnn_samples_v8``*
+
+```
+sudo reboot
+```
+
+#### 3.5.1 Copy the cuDNN samples to a writable path.
+
+```
+cp -r /usr/src/cudnn_samples_v8/ $HOME
+```
+
+#### 3.5.2 Go to the writable path.
+
+```
+cd  $HOME/cudnn_samples_v8/mnistCUDNN
+```
+
+#### 3.5.3 Compile the mnistCUDNN sample
+
+```
+./mnistCUDNN
+```
+
+- [X] If cuDNN is properly installed and running on Linux system, will see a message similar to the following:
+
+  ```
+  Test passed!
+  ```
+  
+  
 
 
   
