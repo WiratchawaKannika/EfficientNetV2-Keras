@@ -83,6 +83,51 @@ reboot
 apt install linux-headers-$(uname -r) gcc make acpid dkms libglvnd-core-dev libglvnd0 libglvnd-dev dracut
 ```
 
+### 1.7 Disable nouveau
+
+- 1.7.1 Create or edit /etc/modprobe.d/blacklist.conf
+
+  - [ ] Append "blacklist nouveau"
+ 
+ ```
+echo "blacklist nouveau" >> /etc/modprobe.d/blacklist.conf
+```
+
+- 1.7.2 Edit /etc/default/grub
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash rd.driver.blacklist=nouveau"
+```
+
+- 1.7.3 Update grub2 conf
+
+```
+update-grub2
+```
+
+- 1.7.4 Generate initramfs
+
+```
+## Backup old initramfs nouveau image ##
+mv /boot/initrd.img-$(uname -r) /boot/initrd.img-$(uname -r)-nouveau
+ 
+## Generate new initramfs image ##
+dracut -q /boot/initrd.img-$(uname -r) $(uname -r)
+```
+
+### 1.8 Reboot to runlevel 3
+
+```
+systemctl set-default multi-user.target
+reboot
+```
+
+
+
+
+
+
+
 
 
     
