@@ -204,14 +204,38 @@ Go to https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x8
   
   ## 3. Install NVIDIA cuDNN
   
- In order to download cuDNN, ensure you are registered for the NVIDIA [Developer Program](https://developer.nvidia.com/developer-program).
+ In order to download cuDNN, ensure registered for the NVIDIA [Developer Program](https://developer.nvidia.com/developer-program).
  After logging in and accepting their terms and conditions, click on the following this links: [cuDNN Archive](https://developer.nvidia.com/rdp/cudnn-archive)
  
  ![chooseCUdnn image](chooseCUdnn.png) 
  
- Click Download. Then, ``scp cudnn-local-repo-ubuntu2004-8.5.0.96_1.0-1_amd64.deb username@xx.xxx.xxx.xx:/home/username/downloaded``
- **NOTE** Absolutely do not download using the command ``wget`` เพราะจะทำให้ไฟล์เสียหาย และติดตั้งไม่ได้
+ - [X] Click Download. Then, ``scp cudnn-local-repo-ubuntu2004-8.5.0.96_1.0-1_amd64.deb username@xx.xxx.xxx.xx:/home/username/downloaded``
  
+    **NOTE** Absolutely do not download using the command ``wget`` เพราะจะทำให้ไฟล์เสียหาย และติดตั้งไม่ได้
+ 
+ ### 3.1 Enable the local repository.
+ 
+ ```
+ sudo dpkg -i cudnn-local-repo-ubuntu2004-8.5.0.96_1.0-1_amd64.deb
+ ```
+ 
+### 3.2 Import the CUDA GPG key.
+
+```
+sudo cp /var/cudnn-local-repo-*/cudnn-local-*-keyring.gpg /usr/share/keyrings/
+```
+หรือ หลังจาก run ``sudo dpkg -i cudnn-local-repo-ubuntu2004-8.5.0.96_1.0-1_amd64.deb`` จะมี out put บอก command line ให้ใช้ Import the CUDA GPG key อยู่ด้วย
+
+### 3.3 Refresh the repository metadata.
+
+```
+sudo apt-get update
+```
+
+### 3.4 Install the runtime library.
+
+ก่อนทำขั้นตอนนี้ ให้เข้าไป check library ใน 
+
  
   
   
