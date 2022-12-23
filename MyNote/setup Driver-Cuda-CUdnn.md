@@ -332,6 +332,11 @@ ii  libcudnn8-samples                          8.5.0.96-1+cuda11.7              
 ```
 
 ```
+cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
+
+```
+
+```
 nvidia-smi
 ```
 
