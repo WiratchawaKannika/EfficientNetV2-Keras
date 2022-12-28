@@ -19,6 +19,7 @@ import argparse
 
 my_parser = argparse.ArgumentParser()
 my_parser.add_argument('--fold', type=int, default='', help='training Number of fold(1-5)')
+my_parser.add_argument('--gpu', type=int, default='', help='GPU 0,1')
 
 args = my_parser.parse_args()
 
@@ -35,8 +36,9 @@ os.environ['XLA_PYTHON_CLIENT_ALLOCATOR']='platform'
 os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
 
 ## set gpu
+gpu_ = args.gpu
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   
-os.environ["CUDA_VISIBLE_DEVICES"]="0"
+os.environ["CUDA_VISIBLE_DEVICES"] = f"{gpu_}"
 #tf_device='/gpu:1'
 #tf_device='/gpu:0'
 
@@ -123,8 +125,7 @@ test_generator = test_datagen.flow_from_dataframe(
         class_mode='raw')
 
 
-##Save model 
-modelName = f'EffnetV2mRegression_R1_5ClassOVRDT_{trainfold}.h5'
+
 
 ## Set TensorBoard 
 root_logdir = f'/media/SSD/ModelEfficientV2_14p/OVRDT_Rrgression/All_round/5Class_model/{trainfold}/R1/Mylogs_tensor/'
@@ -154,9 +155,15 @@ def get_preds_and_labels(model, generator):
     # Flatten list of numpy arrays
     return np.concatenate(preds).ravel(), np.concatenate(labels).ravel()
 
+##Save model 
+modelName = f'EffnetV2mRegression_R1_5ClassOVRDT_{trainfold}.h5'
+root_Metrics = f'/media/SSD/ModelEfficientV2_14p/OVRDT_Rrgression/All_round/5Class_model/{trainfold}/R1/on_epoch_end/'
+if not os.path.exists(root_Metrics) :
+    os.makedirs(root_Metrics)
+    
 class Metrics(Callback):
     def on_epoch_end(self, epochs, logs={}):
-        self.model.save(modelName)
+        self.model.save(f'{root_Metrics}{modelName}')
         return
     
 # For tracking Quadratic Weighted Kappa score and saving best weights
@@ -172,8 +179,9 @@ model.compile(loss='mse',
 checkpoint_filepath = f'/media/SSD/ModelEfficientV2_14p/OVRDT_Rrgression/All_round/5Class_model/{trainfold}/R1/checkpoint/'
 if not os.path.exists(checkpoint_filepath) :
         os.makedirs(checkpoint_filepath)
-model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
-                                filepath=checkpoint_filepath, save_freq='epoch', ave_weights_only=False)
+model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_filepath, 
+                                                                   save_freq='epoch', ave_weights_only=False, monitor="val_mean_absolute_percentage_error")
+
 
 
 ## Fit model 
